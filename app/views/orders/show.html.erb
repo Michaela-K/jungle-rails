@@ -16,23 +16,18 @@
         <th>Total</th>
       </tr>
     </thead>
-    
     <tbody>
-      <tr>
-        <td><%= @order.id %></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td><%= humanized_money_with_symbol @order.total%></td>
-        <td></td>
-      </tr>
+      <% @order.line_items.each do |line_item| %>
+        <%= render 'item', line_item:line_item %>
+      <% end %>
     </tbody>
   </table>
 
-  <%=puts @enhanced_cart.inspect%>
+  <br>
 
   <div class="order-summary jumbotron">
-    <h4> </h4>
+    <h4> Order Total: <%= humanized_money_with_symbol @order.total_cents/100 %>  </h4>
+    <h5> A receipt for this order has been sent to: <%= @order.email %></h5>
   </div>
 
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
