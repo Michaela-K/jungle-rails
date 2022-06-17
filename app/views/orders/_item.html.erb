@@ -2,7 +2,7 @@
   <th><p><%= line_item.id %> </p></th>
   <td><p><%= line_item.product.name %></p></td>
   <td><%= image_tag line_item.product.image.tiny.url %></td>
-  <td><p><%= line_item.product.description.slice(0,100) %>...</p></td>
+  <td><p><%= line_item.product.description%></p></td>
   <td><p><%= line_item.quantity %></p></td>
   <td><p><%= humanized_money_with_symbol line_item.total_price %></p></td>
 </tr>
