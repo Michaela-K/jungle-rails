@@ -2,7 +2,7 @@ class CartsController < ApplicationController
   
   def show
     if enhanced_cart == {}
-      flash[:danger] = "2. OOPS! your cart is empty, Lets fix that!"
+      flash[:alert] = "OOPS! your cart is empty, "
     else
       render :show
     end

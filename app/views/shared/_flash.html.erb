@@ -1,0 +1,13 @@
+<% if flash[:notice] %>
+  <div class="alert alert-info mt-4" role="alert">
+    <%= flash[:notice] %>
+    <%= link_to 'All Products', [:admin, :products], class: 'btn btn-info' %>
+  </div>
+<%end%>
+
+<% if flash[:alert] %>
+  <div class="alert alert-warning mt-4" role="alert">
+    <%= flash[:alert] %>
+    <%= link_to " Lets Fix that!", "/" %>
+  </div>
+<%end%>
