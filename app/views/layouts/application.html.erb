@@ -14,6 +14,7 @@
 <%= render 'layouts/top_nav' %>
 
 <main class="container">
+
   <%= render partial: "shared/flash"%>
 
   <% if current_user %>
@@ -22,6 +23,7 @@
   <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
 <% end %>
   <%= yield %>
+  
 </main>
 
   <%= yield :end_of_body %>
