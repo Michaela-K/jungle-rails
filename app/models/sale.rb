@@ -3,7 +3,7 @@ class Sale < ApplicationRecord
   def finished?
     ends_on < Date.current
   end
-  def finished?
+  def upcoming?
     starts_on > Date.current
   end
   def active?
