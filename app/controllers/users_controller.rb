@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+  
   def index
     @users = User.all
   end 
@@ -12,7 +12,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     # @user = User.where(id: params[:id])
     if @user.save
-      redirect_to [:users],  notice: 'user successfully created!'
+      session[:user_id] = @user.id
+      redirect_to '/',  notice: 'user successfully created!'
     else
       redirect_to '/signup'
     end
