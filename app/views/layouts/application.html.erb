@@ -15,21 +15,20 @@
 
 <main class="container">
 
-  <%= render partial: "shared/flash"%>
-
-  <% if current_user %>
-    Signed in as <%= current_user.firstname %> | <%= link_to "Logout", '/logout' %>
-  <% else %>
-    <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
+<% if current_user %>
+Signed in as <%= current_user.firstname %> | <%= link_to "Logout", '/logout' %>
+<% else %>
+<%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
   <% end %>
 
   <% if active_sale? %>
-    <p class="alert alert-info">
-      There is an active <%= "Back to School" %> sale going on!
-      <strong>Everything is <%= 15 %>% off ! </strong>
-    </p>
+  <p class="alert alert-info">
+  There is an active <%= "Back to School" %> sale going on!
+  <strong>Everything is <%= 15 %>% off ! </strong>
+  </p>
   <% end %>
-
+  
+  <%= render partial: "shared/flash"%>
 
 
   <%= yield %>
