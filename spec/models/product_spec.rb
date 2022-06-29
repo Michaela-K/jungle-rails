@@ -29,7 +29,7 @@ RSpec.describe Product, type: :model do
     it "ensures price is present" do
       @category = Category.new(id: 1)
       @product = Product.new(name: "pothos", price: "19.99", quantity: 2, category: @category)
-      expect(@product.price).to be_truthy      #WHY CANT USE .TO BE EQ
+      expect(@product.price).to be_truthy                                                         #WHY CANT USE .TO BE EQ
      end
 
     # validation :quantity, presence: true
@@ -51,7 +51,7 @@ RSpec.describe Product, type: :model do
       @product = Product.new(name: "pothos" , price: "19.99", quantity: 2, category: @category)
 
       expect(@product.name).not_to be(nil)
-      # expect(@product.errors.full_messages[:name]).to be_truthy
+      # expect(@product.errors.full_messages[:name]).to be_truthy                              ##THIS
       expect(@product.price).not_to be(nil)
       expect(@product.quantity).not_to be(nil)
       expect(@product.category).not_to be(nil)
