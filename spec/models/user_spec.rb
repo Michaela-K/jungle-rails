@@ -52,12 +52,13 @@ RSpec.describe User, type: :model do
       expect(@user).to have_attributes(:email => 'rose@gmail.com')
     end
 
-    # it "should validate when email is in the wrong case" do
-    #   @user = User.new(:email => 'rOse@gmail.cOm', :password => 'password')
-    #   @user.save
+    it "should validate when email is in the wrong case" do
+      @user = User.new(:email => 'rose@gmail.cOm', :password => 'password')
+      @user.save
+      @user2
 
-    #   expect(@user.email).to be_valid
-    # end
+      expect(@user).to eq(@user2)
+    end
 
     it "should not validate when email and password don't match" do
       @user = User.new(:email => 'rose@gmail.com', :password => 'password')
