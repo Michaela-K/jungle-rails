@@ -45,27 +45,22 @@ RSpec.describe User, type: :model do
 
 
   describe '.authenticate_with_credentials' do
+
+    it "should validate when email is in the wrong case" do
+      @user = User.new(:email => 'rose@gmail.com', :password => 'password',password_confirmation:'password')
+      @user.save
+
+      @user2 = User.authenticate_with_credentials(@user.email.upcase, 'password')
+
+      expect(@user2).to have_attributes(:email => 'rose@gmail.com')
+    end
+    
     it 'should validate emails with spaces before/after' do
       @user = User.new(:email => '  rose@gmail.com  ')
       @user[:email].strip!
 
       expect(@user).to have_attributes(:email => 'rose@gmail.com')
     end
-
-    it "should validate when email is in the wrong case" do
-      @user = User.new(:email => 'rose@gmail.cOm', :password => 'password')
-      @user.save
-      @user2
-
-      expect(@user).to eq(@user2)
-    end
-
-    it "should not validate when email and password don't match" do
-      @user = User.new(:email => 'rose@gmail.com', :password => 'password')
-
-      expect(@user).to_not have_attributes(:email => nil, :password => nil)
-    end
-
   end
 
 
